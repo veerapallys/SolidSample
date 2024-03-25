@@ -3,8 +3,9 @@
 namespace ArdalisRating
 {
 
-    public class Policy
+    public class Policy:IEquatable<Policy>
     {
+        
         public PolicyType Type { get; set; }
         #region Life Insurance
         public string FullName { get; set; }
@@ -26,6 +27,16 @@ namespace ArdalisRating
         public int Year { get; set; }
         public int Miles { get; set; }
         public decimal Deductible { get; set; }
+
+        #region Flood In Addition To Land
+        public int ElevationAboveSeaLevelFeet { get; set; }
+        #endregion
+        
+        public bool Equals(Policy other)
+        {
+            return this.Type == other.Type 
+            && this.BondAmount == other.BondAmount && this.Valuation == other.Valuation;
+        }
         #endregion
 
     }
